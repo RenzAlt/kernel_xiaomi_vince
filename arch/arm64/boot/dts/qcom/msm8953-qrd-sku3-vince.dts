@@ -44,10 +44,4 @@
 	vbus_dwc3-supply = <&smbcharger_charger_otg>;
 };
 
-&wled {
-	qcom,fs-curr-ua = <20000>;
-	qcom,led-strings-list = [00 01];
-	qcom,ovp-mv = <29500>;
-};
-
 #include "vince/overlay.dtsi"
