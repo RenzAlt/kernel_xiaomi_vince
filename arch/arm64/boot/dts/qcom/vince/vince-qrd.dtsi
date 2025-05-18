@@ -476,8 +476,3 @@
 &sdhc_2 {
 	cd-gpios = <&tlmm 133 0x0>;
 };
-
-&led_flash0{
-	 qcom,flash-source = <&pmi8950_flash0 &pmi8950_flash1>;
-	 qcom,torch-source = <&pmi8950_torch0 &pmi8950_torch1>;
-};
