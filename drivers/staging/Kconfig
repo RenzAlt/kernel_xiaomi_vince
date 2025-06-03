@@ -21,6 +21,12 @@ menuconfig STAGING
 
 	  If in doubt, say N here.
 
+config PRONTO_WLAN
+	tristate "Qualcomm Atheros Pronto WLAN module"
+	default n
+	help
+	  Add support for the Qualcomm Atheros Pronto WLAN module
+
 
 if STAGING
 
