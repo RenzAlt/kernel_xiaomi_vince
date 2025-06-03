@@ -18,6 +18,7 @@ endif
 dts-dirs += renesas
 dts-dirs += rockchip
 dts-dirs += socionext
+dts-dirs += xiaomi-snow
 dts-dirs += sprd
 dts-dirs += xilinx
 dts-dirs += lg
