@@ -195,9 +195,6 @@ static ssize_t fwu_sysfs_guest_code_block_count_show (struct device *dev,
 static ssize_t fwu_sysfs_write_guest_code_store (struct device *dev,
 		struct device_attribute *attr, const char *buf, size_t count);
 
-static ssize_t fwu_sysfs_read_guest_serialization_show (struct device *dev,
-		struct device_attribute *attr, char *buf);
-
 #ifdef SYNA_TDDI
 static ssize_t fwu_sysfs_write_lockdown_code_store (struct device *dev,
 		struct device_attribute *attr, const char *buf, size_t count);
@@ -822,9 +819,6 @@ static struct device_attribute attrs[] = {
 	__ATTR (writeguestcode, (S_IWUSR | S_IWGRP),
 			synaptics_rmi4_show_error,
 			fwu_sysfs_write_guest_code_store),
-	__ATTR (guestserialization, S_IRUGO,
-			fwu_sysfs_read_guest_serialization_show,
-			synaptics_rmi4_store_error),
 
 #ifdef SYNA_TDDI
 	__ATTR (lockdowncode, (S_IWUSR | S_IWGRP | S_IRUGO),
@@ -5449,20 +5443,6 @@ static ssize_t fwu_sysfs_guest_code_block_count_show (struct device *dev,
 
 	return retval;
 }
-
-
-static ssize_t fwu_sysfs_read_guest_serialization_show (struct device *dev,
-		struct device_attribute *attr, char *buf)
-{
-	int retval;
-
-	fwu_do_read_customer_serialization_data ();
-
-	retval = snprintf (buf, PAGE_SIZE, "%s\n", fwu->read_config_buf);
-
-	return retval;
-}
-
 
 static ssize_t fwu_sysfs_write_guest_code_store (struct device *dev,
 		struct device_attribute *attr, const char *buf, size_t count)
